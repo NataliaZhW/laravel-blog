@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+//use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property string $name
@@ -26,9 +27,10 @@ class User extends Model implements Authenticatable
         'password',
     ];
 
-    public function images(): HasMany
+    public function images(): HasOne //HasMany
     {
-        return $this->hasMany(UserImages::class);
+        return $this->hasOne(UserImages::class);
+        //return $this->hasMany(UserImages::class);
     }
 
 
