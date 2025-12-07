@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
-use App\Repository\User\UserRepository;
-use App\Repository\User\UserRepositoryInterface;
+use App\Models\Category;
+use App\Models\Post;
+use App\Observers\PostObserver;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,14 +16,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        //
     }
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
-        //
+    {        
+        $globalCategories = Category::query()
+            ->with(['children.children', 'parent'])
+            ->whereNull('parent_id')
+            ->get();
+
+        View::composer('*', function ($view) use ($globalCategories) {
+            $view->with('globalCategories', $globalCategories);
+        });
+
+        Post::observe(PostObserver::class);
+
+        URL::defaults([
+        'lang' => app()->getLocale() ?? 'en', // или по умолчанию
+    ]);
     }
 }

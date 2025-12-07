@@ -1,59 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYT82r3sj9WetihrRxJMRB5cmH1oaAUN8iUr3XJVyY0Z61BRuHJPWGqISzMM_HWnpae4&usqp=CAU">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 🏫 Top Academy
 
-## About Laravel
+**Top Academy** — современная образовательная платформа, предоставляющая качественные онлайн-курсы и программу профессиональной подготовки в сфере технологий, бизнеса и креативных профессий.  
+Мы создаём удобные и эффективные инструменты для обучения, помогая студентам развиваться и достигать своих карьерных целей.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Наша миссия
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Мы стремимся сделать качественное образование доступным каждому.  
+Top Academy сочетает современные технологии, практические задания и поддержку преподавателей, чтобы обучение было максимально эффективным и результативным.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 📘 Основные направления обучения
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 💻 Программирование и IT
+- Laravel, PHP, Go
+- JavaScript, Frontend
+- DevOps
+- Базы данных и др.
 
-## Laravel Sponsors
+### 📊 Бизнес и маркетинг
+- Digital-маркетинг
+- Проектный менеджмент
+- Аналитика
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🎨 Креативные профессии
+- Графический дизайн
+- UX/UI
+- Основы визуальной коммуникации
 
-### Premium Partners
+### 🎓 Дополнительные программы
+- Курсы для школьников
+- Интенсивы
+- Подготовка к вступительным экзаменам
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ О компании
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Более **5 лет** опыта в образовательных онлайн-проектах
+- **Собственная платформа** с личным кабинетом
+- Команда **практикующих преподавателей**
+- Итоговые проекты, **менторская поддержка** и карьерное сопровождение
+- Доступ к материалам **24/7**
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🛠️ Запустить проект (Инструкция)
+1. Скачать проект через Git clone.
+2. Сделать копию .env.example и назвать её .env.
+3. Также подтянуть зависимости через команду (composer install).
+4. Создать ключ для .env через команду (php artisan key:generate).
+5. Также для работа скачивания картинки и отображения запускаем команду (php artisan storage:link).
+6. Также по ситуации настраиваем базу данных (mysql, postgres, sqlite). Для простоты создаем файл database/database.sqlite и sqlite сразу подцепит вход в бд.
+7. php artisan serve (для запуска сервера локально)
+8. Дальше делаем переход <a href="http://localhost:8000">Сюда</a>

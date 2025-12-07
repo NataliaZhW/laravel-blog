@@ -1,73 +1,72 @@
 <?php
+// app/Models/User.php
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\Authenticatable;
+// Все необходимые импорты
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 /**
- * @property string $name
+ * @property string $username
  * @property string $email
  * @property string $password
- * @property int $id
+ * @property string $avatar
+ * @property int $role_id
  */
-class User extends Model implements Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'role_id',
+        'avatar',
     ];
 
     protected $hidden = [
         'password',
+        'remember_token',
     ];
 
-    public function images(): HasOne //HasMany
+    protected function casts(): array
     {
-        return $this->hasOne(UserImages::class);
-        //return $this->hasMany(UserImages::class);
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 
-
-
-
-    public function getAuthIdentifierName()
+    // Убедимся что Post модель доступна
+    public function posts()
     {
-        // TODO: Implement getAuthIdentifierName() method.
+        return $this->hasMany(\App\Models\Post::class);
     }
 
-    public function getAuthIdentifier()
+    public function getAvatarUrl()
     {
-        // TODO: Implement getAuthIdentifier() method.
+        if ($this->avatar) {
+            // Правильный путь через Storage
+            return Storage::url('avatars/' . $this->avatar);
+        }
+
+        return asset('images/default-avatar.png');
     }
 
-    public function getAuthPasswordName()
+    public function role(): BelongsTo
     {
-        // TODO: Implement getAuthPasswordName() method.
+        return $this->belongsTo(Role::class);
     }
 
-    public function getAuthPassword()
+    public function isAdmin(): bool
     {
-        // TODO: Implement getAuthPassword() method.
-    }
-
-    public function getRememberToken()
-    {
-        // TODO: Implement getRememberToken() method.
-    }
-
-    public function setRememberToken($value)
-    {
-        // TODO: Implement setRememberToken() method.
-    }
-
-    public function getRememberTokenName()
-    {
-        // TODO: Implement getRememberTokenName() method.
+        return $this->role->name === 'admin';
     }
 }

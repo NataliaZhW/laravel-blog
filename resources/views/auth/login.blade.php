@@ -1,47 +1,36 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-</head>
+@section('content')
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-2xl font-bold mb-6 text-center">Вход</h2>
 
-<body>
-    <div class="container mt-2">
-        <form action="{{ route('login') }}" method="post">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-            @csrf
-            <div class="row mb-3">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input name="email" type="email" class="form-control" id="inputName3">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                    <input name="password" type="password" class="form-control" id="inputPassword3">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        {{-- @dd($user->images)--}}
-        @foreach($user->images as $image)
-        <img src="{{ asset($image->path) }}" width="200px" height="150px" alt="">
-        @endforeach
+    <form method="POST" action="{{ route('post.login') }}">
+        @csrf
+
+        <div class="mb-4">
+            <label for="login" class="block text-gray-700 text-sm font-bold mb-2">Username или Email</label>
+            <input type="text" name="login" id="login" value="{{ old('login') }}"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required autofocus>
+        </div>
+
+        <div class="mb-6">
+            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">@lang('messages.password')</label>
+            <input type="password" name="password" id="password"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            @lang('messages.login')
+        </button>
+    </form>
+
+    <div class="mt-4 text-center">
+        <p class="text-gray-600">Нет аккаунта?
+            <a href="{{ route('register', ['lang' => app()->getLocale()]) }}" class="text-blue-600 hover:text-blue-800">Зарегистрироваться</a>
+        </p>
+        <a href="{{ route('password.reset', ['lang' => app()->getLocale()]) }}" class="text-blue-600 hover:text-blue-800">Забыли пароль?</a>
     </div>
-</body>
-
-</html>
+</div>
+@endsection
